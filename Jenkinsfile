@@ -15,6 +15,10 @@ pipeline {
             }
         }
         stage("three"){
+            when{
+                branch 'main'
+                changeset "**/worker**"
+            }
             steps{
                 echo 'step 3'
                 sleep 5
