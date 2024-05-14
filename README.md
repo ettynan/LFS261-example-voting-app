@@ -1,6 +1,10 @@
 Example Voting App
 =========
 
+Add Status here
+---------------
+
+
 Getting started
 ---------------
 
