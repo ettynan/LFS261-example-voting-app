@@ -15,6 +15,10 @@ pipeline {
             }
         }
         stage("three"){
+            when{
+                branch 'main'
+                changeset "**/worker**"
+            }
             steps{
                 echo 'step 3'
                 sleep 5
@@ -23,9 +27,15 @@ pipeline {
     } 
 
     post{
-      always{
-          echo 'This pipeline is completed.'
-      }
+        always{
+            echo 'Pipeline completed successfully'
+        }
+        failure{
+            slackSend (channel: "#ci-cd", message: "Build Failed: ${env.JOB_NAME} ${env.BUILD_NUMBER}")
+        }
+        success{
+            slackSend (channel: "#ci-cd", message: "Build Success: ${env.JOB_NAME} ${env.BUILD_NUMBER}")
+        }
     }
 }
 
