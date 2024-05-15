@@ -14,15 +14,21 @@ pipeline {
      }
      stage("test"){
          steps{
-             echo 'Running Unit Tests on worker app'
-             }
-         }
-     stage("package"){
-         steps{
-             echo 'Packaging worker app'
+             echo 'Running Unit Tests on worker app..'
+             dir('worker'){
+               sh 'mvn clean test'
              }
          }
      }
+     stage("package"){
+         steps{
+             echo 'Packaging worker app'
+             dir('worker'){
+               sh 'mvn package'
+             }
+         }
+     }
+  }
   post{
     always{
         echo 'Building multibranch pipeline for worker is completed..'
