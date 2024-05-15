@@ -7,7 +7,7 @@ pipeline {
      stage("build"){
          when{
              changeset "**/result/**"
-         }
+           }
          steps{
              echo 'Compiling result app'
              dir('result'){
@@ -18,7 +18,7 @@ pipeline {
      stage("test"){
          when{
              changeset "**/result/**"
-         }
+           }
          steps{
              echo 'Running Unit Tests on result app..'
              dir('result'){
@@ -30,7 +30,7 @@ pipeline {
   }
   post{
     always{
-        echo 'Building multibranch pipeline for worker is completed..'
+        echo 'Building multibranch pipeline for result is completed..'
      }
   }
 }
