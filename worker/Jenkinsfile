@@ -23,6 +23,10 @@ pipeline {
          }
      }
      stage("package"){
+         when{
+             branch 'main'
+             changeset "**/worker/**"
+         }
          steps{
              echo 'Packaging worker app into a jarfile'
              dir('worker'){
