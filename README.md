@@ -3,7 +3,7 @@ Example Voting App
 
 Add Status here
 ---------------
-testing
+testing 2
 
 Getting started
 ---------------
