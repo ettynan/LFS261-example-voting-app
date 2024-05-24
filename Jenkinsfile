@@ -117,7 +117,7 @@ pipeline {
              echo 'Packaging result app with docker'
              script{
                  docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin'){
-                    def resultImage = docker.build("xxxxx/result:v${env.BUILD_ID}", './result')
+                    def resultImage = docker.build("ettynan/result:v${env.BUILD_ID}", './result')
                     resultImage.push()
                     resultImage.push("${env.BRANCH_NAME}")
                     resultImage.push('latest')
@@ -182,7 +182,7 @@ pipeline {
                  // ./vote is the path to the Dockerfile that Jenkins will find from the Github repo
                     def voteImage = docker.build("ettynan/vote:${env.GIT_COMMIT}", "./vote")
                     voteImage.push()
-                    voteImage.push("${env.BRANCH_NAME}")
+                   # voteImage.push("${env.BRANCH_NAME}")
                     voteImage.push("latest")
                  }
              }
