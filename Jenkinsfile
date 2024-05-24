@@ -182,7 +182,7 @@ pipeline {
                  // ./vote is the path to the Dockerfile that Jenkins will find from the Github repo
                     def voteImage = docker.build("ettynan/vote:${env.GIT_COMMIT}", "./vote")
                     voteImage.push()
-                   # voteImage.push("${env.BRANCH_NAME}")
+                   // voteImage.push("${env.BRANCH_NAME}")
                     voteImage.push("latest")
                  }
              }
